@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  eventbookerback:
+    image: ${DOCKER_REGISTRY-}eventbookerback
+    build:
+      context: .
+      dockerfile: Dockerfile
+  sqldb:
+      image: mcr.microsoft.com/mssql/server:2022-latest
+      environment:
+        - SA_PASSWORD=2Secure*Password2
+        - ACCEPT_EULA=Y
+      ports:
+        - "1440:1433"
